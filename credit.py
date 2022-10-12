@@ -75,28 +75,28 @@ def pay_bill(amount, day, month):
 # Initialize all global variables outside the main block.
 initialize()		
     
-if __name__ == '__main__':
-    # Describe your testing strategy and implement it below.
-    # What you see here is just the simulation from the handout, which
-    # doesn't work yet.
-    initialize()
-    purchase(80, 8, 1, "Canada")
-    print("Now owing:", amount_owed(8, 1))      # 80.0                              (Test1)
-    pay_bill(50, 2, 2)
-    print("Now owing:", amount_owed(2, 2))      # 30.0     (=80-50)                 (Test2)
-    print("Now owing:", amount_owed(6, 3))      # 31.5     (=30*1.05)               (Test3)
-    purchase(40, 6, 3, "Canada")
-    print("Now owing:", amount_owed(6, 3))      # 71.5     (=31.5+40)               (Test4)
-    pay_bill(30, 7, 3)
-    print("Now owing:", amount_owed(7, 3))      # 41.5     (=71.5-30)               (Test5)
-    print("Now owing:", amount_owed(1, 5))      # 43.65375 (=1.5*1.05*1.05+40*1.05) (Test6)
-    purchase(40, 2, 5, "France")
-    print("Now owing:", amount_owed(2, 5))      # 83.65375                          (Test7)
-    print(purchase(50, 3, 5, "United States"))  # error    (3 diff. countries in    (Test8)
-                                                #          a row)
+# if __name__ == '__main__':
+#     # Describe your testing strategy and implement it below.
+#     # What you see here is just the simulation from the handout, which
+#     # doesn't work yet.
+#     initialize()
+#     purchase(80, 8, 1, "Canada")
+#     print("Now owing:", amount_owed(8, 1))      # 80.0                              (Test1)
+#     pay_bill(50, 2, 2)
+#     print("Now owing:", amount_owed(2, 2))      # 30.0     (=80-50)                 (Test2)
+#     print("Now owing:", amount_owed(6, 3))      # 31.5     (=30*1.05)               (Test3)
+#     purchase(40, 6, 3, "Canada")
+#     print("Now owing:", amount_owed(6, 3))      # 71.5     (=31.5+40)               (Test4)
+#     pay_bill(30, 7, 3)
+#     print("Now owing:", amount_owed(7, 3))      # 41.5     (=71.5-30)               (Test5)
+#     print("Now owing:", amount_owed(1, 5))      # 43.65375 (=1.5*1.05*1.05+40*1.05) (Test6)
+#     purchase(40, 2, 5, "France")
+#     print("Now owing:", amount_owed(2, 5))      # 83.65375                          (Test7)
+#     print(purchase(50, 3, 5, "United States"))  # error    (3 diff. countries in    (Test8)
+#                                                 #          a row)
                                                 
-    print("Now owing:", amount_owed(3, 5))      # 83.65375 (no change, purchase     (Test9)
-                                                #           declined)
-    print(purchase(150, 3, 5, "Canada"))        # error    (card disabled)          (Test10)
-    print("Now owing:", amount_owed(1, 6))      # 85.8364375                        (Test11)
-    print("Now owing:", amount_owed(1, 9))                                          # (43.65375*1.05+40
+#     print("Now owing:", amount_owed(3, 5))      # 83.65375 (no change, purchase     (Test9)
+#                                                 #           declined)
+#     print(purchase(150, 3, 5, "Canada"))        # error    (card disabled)          (Test10)
+#     print("Now owing:", amount_owed(1, 6))      # 85.8364375                        (Test11)
+#     print("Now owing:", amount_owed(1, 9))                                          # (43.65375*1.05+40
