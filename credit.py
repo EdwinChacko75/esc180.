@@ -43,17 +43,19 @@ def purchase(amount, day, month, country):
     last_country2, last_country = last_country, country
     last_update_day, last_update_month = day, month 
     cur_balance_owing_recent += amount
+    #print(cur_balance_owing_intst)
 
 def amount_owed(day, month):
     global last_country, last_country2, last_update_day, last_update_month, cur_balance_owing_intst, cur_balance_owing_recent
     if not date_same_or_later(day, month, last_update_day, last_update_month):
         return 'error'
     if month != last_update_month != 1:
-        for x in range(month - last_update_month):
-            cur_balance_owing_intst = cur_balance_owing_recent * 0.05 + cur_balance_owing_intst * 0.05
+        #for x in range(month - last_update_month):
+        cur_balance_owing_intst = cur_balance_owing_recent * 1.05 + cur_balance_owing_intst * 1.05 *1.05 - cur_balance_owing_recent
     last_update_day, last_update_month = day, month 
-    return cur_balance_owing_intst + cur_balance_owing_recent
 
+    return cur_balance_owing_intst + cur_balance_owing_recent
+#intst var not maintaining value after adding shit
     
     
 def pay_bill(amount, day, month):
@@ -63,7 +65,7 @@ def pay_bill(amount, day, month):
     day, month = last_update_day, last_update_month
     if cur_balance_owing_intst != 0 and cur_balance_owing_intst > amount:
         cur_balance_owing_intst -= amount
-    else:  
+    else:
         #amount -= cur_balance_owing_intst
         #cur_balance_owing_intst = 0
         cur_balance_owing_recent -= amount
@@ -99,4 +101,4 @@ if __name__ == '__main__':
                                                 #           declined)
     print(purchase(150, 3, 5, "Canada"))        # error    (card disabled)          (Test10)
     print("Now owing:", amount_owed(1, 6))      # 85.8364375                        (Test11)
-    print("Now owing:", amount_owed(1, 9))                                          # (43.65375*1.05+40
+                                                # (43.65375*1.05+40
