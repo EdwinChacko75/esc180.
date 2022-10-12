@@ -2,11 +2,9 @@
 You should complete every incomplete function,
 and add more functions and variables as needed.
 Ad comments as required.
-
 Note that incomplete functions have 'pass' as the first statement:
 pass is a Python keyword; it is a statement that does nothing.
 This is a placeholder that you should remove once you modify the function.
-
 Author: Michael Guerzhoy.  Last modified: Oct. 3, 2022
 """
 
@@ -40,18 +38,25 @@ def purchase(amount, day, month, country):
         return 'error'
     if not date_same_or_later(day, month, last_update_day, last_update_month):
         return 'error'
+    if month == last_update_month:
+        cur_balance_owing_recent += amount
+    else:
+        cur_balance_owing_intst += amount
     last_country2, last_country = last_country, country
     last_update_day, last_update_month = day, month 
-    cur_balance_owing_recent += amount
     #print(cur_balance_owing_intst)
 
 def amount_owed(day, month):
     global last_country, last_country2, last_update_day, last_update_month, cur_balance_owing_intst, cur_balance_owing_recent
     if not date_same_or_later(day, month, last_update_day, last_update_month):
         return 'error'
+    print(cur_balance_owing_intst, cur_balance_owing_recent)
     if month != last_update_month != 1:
-        #for x in range(month - last_update_month):
-        cur_balance_owing_intst = cur_balance_owing_recent * 1.05 + cur_balance_owing_intst * 1.05 *1.05 - cur_balance_owing_recent
+        print(f'87.36 = {cur_balance_owing_intst} * (1.05 ** ({month} - {last_update_month})) + {cur_balance_owing_recent} * (1.05 ** ({month} - {last_update_month + 1}))')
+        cur_balance_owing_intst = cur_balance_owing_intst * (1.05 ** (month - last_update_month)) + cur_balance_owing_recent * (1.05 ** (month - last_update_month - 1))
+        cur_balance_owing_recent = 0
+    print(cur_balance_owing_intst, cur_balance_owing_recent)
+
     last_update_day, last_update_month = day, month 
 
     return cur_balance_owing_intst + cur_balance_owing_recent
@@ -66,8 +71,8 @@ def pay_bill(amount, day, month):
     if cur_balance_owing_intst != 0 and cur_balance_owing_intst > amount:
         cur_balance_owing_intst -= amount
     else:
-        #amount -= cur_balance_owing_intst
-        #cur_balance_owing_intst = 0
+        amount -= cur_balance_owing_intst
+        cur_balance_owing_intst = 0
         cur_balance_owing_recent -= amount
 
 
