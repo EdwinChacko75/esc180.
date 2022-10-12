@@ -64,8 +64,8 @@ def pay_bill(amount, day, month):
     if cur_balance_owing_intst != 0 and cur_balance_owing_intst > amount:
         cur_balance_owing_intst -= amount
     else:  
-        amount -= cur_balance_owing_intst
-        cur_balance_owing_intst = 0
+        #amount -= cur_balance_owing_intst
+        #cur_balance_owing_intst = 0
         cur_balance_owing_recent -= amount
 
 
