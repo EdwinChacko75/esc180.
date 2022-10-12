@@ -50,7 +50,7 @@ def amount_owed(day, month):
         return 'error'
     if month != last_update_month != 1:
         for x in range(month - last_update_month):
-            cur_balance_owing_intst += cur_balance_owing_recent * 0.05
+            cur_balance_owing_intst = cur_balance_owing_recent * 0.05 + cur_balance_owing_intst * 0.05
     last_update_day, last_update_month = day, month 
     return cur_balance_owing_intst + cur_balance_owing_recent
 
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     print("Now owing:", amount_owed(6, 3))      # 31.5     (=30*1.05)               (Test3)
     purchase(40, 6, 3, "Canada")
     print("Now owing:", amount_owed(6, 3))      # 71.5     (=31.5+40)               (Test4)
-    pay_bill(30, 7, 3)
+    pay_bill(30, 7, 3)      
     print("Now owing:", amount_owed(7, 3))      # 41.5     (=71.5-30)               (Test5)
     print("Now owing:", amount_owed(1, 5))      # 43.65375 (=1.5*1.05*1.05+40*1.05) (Test6)
     purchase(40, 2, 5, "France")
