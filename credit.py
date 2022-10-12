@@ -50,12 +50,9 @@ def amount_owed(day, month):
     global last_country, last_country2, last_update_day, last_update_month, cur_balance_owing_intst, cur_balance_owing_recent
     if not date_same_or_later(day, month, last_update_day, last_update_month):
         return 'error'
-    print(cur_balance_owing_intst, cur_balance_owing_recent)
     if month != last_update_month != 1:
-        print(f'87.36 = {cur_balance_owing_intst} * (1.05 ** ({month} - {last_update_month})) + {cur_balance_owing_recent} * (1.05 ** ({month} - {last_update_month + 1}))')
         cur_balance_owing_intst = cur_balance_owing_intst * (1.05 ** (month - last_update_month)) + cur_balance_owing_recent * (1.05 ** (month - last_update_month - 1))
         cur_balance_owing_recent = 0
-    print(cur_balance_owing_intst, cur_balance_owing_recent)
 
     last_update_day, last_update_month = day, month 
 
