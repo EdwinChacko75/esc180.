@@ -1,3 +1,4 @@
+
 """The Credit Card Simulator starter code
 You should complete every incomplete function,
 and add more functions and variables as needed.
@@ -92,6 +93,11 @@ def pay_bill(amount, day, month):
 
 def interest(month, last_month):
     global last_country, last_country2, last_update_day, last_update_month, cur_balance_owing_intst, cur_balance_owing_recent
-    if month != last_month and last_month != 1:
+    if month - last_update_month  == 1 and month != 2:
+        cur_balance_owing_intst = cur_balance_owing_recent + cur_balance_owing_intst *1.05
+        cur_balance_owing_recent = 0
+    elif month != last_month and month - last_update_month != 1:
         cur_balance_owing_intst = cur_balance_owing_intst * (1.05 ** (month - last_update_month)) + cur_balance_owing_recent * (1.05 ** (month - last_update_month - 1))
         cur_balance_owing_recent = 0
+
+initialize()
